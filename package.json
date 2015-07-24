@@ -1,0 +1,19 @@
+{
+  "name": "angular-phonecat",
+  "version": "1.0.0",
+  "description": "Angular phonecat tutorial",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maxbey/angular-phonecat.git"
+  },
+  "author": "Maxbey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maxbey/angular-phonecat/issues"
+  },
+  "homepage": "https://github.com/Maxbey/angular-phonecat#readme"
+}
