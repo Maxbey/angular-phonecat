@@ -5,6 +5,7 @@ gulp.task('js', function() {
     
     return gulp.src([
         
+        './app.js',
         './controllers/*.js',
         './directives/*.js',
         './filters/*.js',
