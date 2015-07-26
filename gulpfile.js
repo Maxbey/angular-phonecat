@@ -15,4 +15,14 @@ gulp.task('js', function() {
     .pipe(gulp.dest('./public/js/'));
 });
 
+gulp.task('watch', function(){
+    gulp.watch([
+        './app.js',
+        './filters/*.js',
+        './controllers/*.js',
+        './directives/*.js',
+        './services/*.js'
+    ], ['js']);
+});
+
 gulp.task('default', ['js']);

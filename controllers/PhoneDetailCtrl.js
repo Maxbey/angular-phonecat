@@ -20,6 +20,5 @@ phonecatApp.controller('PhoneDetailCtrl', function($scope, $http, $location, $ro
         $scope.setImageUrl = function(imageUrl){
             $scope.mainImageUrl = imageUrl;
         };
-    
     }
 );
