@@ -1,0 +1,30 @@
+     <h1>{{ title }}</h1>
+     <hr>
+      <div class="row row-offcanvas row-offcanvas-right">
+         <div class="col-xs-12 col-sm-8">
+             <div class="row">
+                  <div class="col-xs-12 col-sm-6 col-lg-4 item" ng-repeat="phone in phones">
+                      <div class="preview-img text-center">
+                          <img ng-src="{{ 'public/' + phone.imageUrl }}" alt="{{ phone.name }}">
+                          <span class="label" ng-init="status = phone.status ? 'В наличии' : 'Под заказ'" 
+                             ng-class="{'label-success': phone.status, 'label-warning': !phone.status}" >
+                              {{ status }}
+                          </span>
+                          <h2>{{ phone.name }}</h2>
+                          <p>{{ phone.snippet }}</p>
+                          <p><a class="btn btn-default" href="/phones/{{ phone.id }}" role="bottom">Show Details</a></p>
+                      </div>
+                  </div>
+             </div>
+          </div>
+          <div class="col-xs-6 col-sm-4 sidebar-offcanvas" id="sidebar">
+		<h3 class="text-center">Filter</h3>
+		<div class="list-group">
+			<div class="list-group-item text-center">
+				<form>
+					<input type="text" class="form-control" placeholder="Search..." ng-model="search">
+				</form>
+			</div>
+		</div>
+	</div><!--/.sidebar-offcanvas-->
+      </div>
