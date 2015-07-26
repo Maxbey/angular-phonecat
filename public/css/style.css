@@ -93,6 +93,7 @@ h2 {
   float: left;
   width: 30%;
   padding:16px;
+    cursor: pointer;
 }
 .phone-thumbs li img {
   max-width: 100%;

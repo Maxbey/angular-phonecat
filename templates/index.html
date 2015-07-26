@@ -3,7 +3,7 @@
       <div class="row row-offcanvas row-offcanvas-right">
          <div class="col-xs-12 col-sm-8">
              <div class="row">
-                  <div class="col-xs-12 col-sm-6 col-lg-4 item" ng-repeat="phone in phones">
+                  <div class="col-xs-12 col-sm-6 col-lg-4 item" ng-repeat="phone in phones | filter:search">
                       <div class="preview-img text-center">
                           <img ng-src="{{ 'public/' + phone.imageUrl }}" alt="{{ phone.name }}">
                           <span class="label" ng-init="status = phone.status ? 'В наличии' : 'Под заказ'" 

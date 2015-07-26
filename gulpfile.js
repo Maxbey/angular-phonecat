@@ -6,9 +6,9 @@ gulp.task('js', function() {
     return gulp.src([
         
         './app.js',
+        './filters/*.js',
         './controllers/*.js',
         './directives/*.js',
-        './filters/*.js',
         './services/*.js'
         
     ]).pipe(concat('app.js'))

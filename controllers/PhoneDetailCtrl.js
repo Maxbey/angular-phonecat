@@ -6,7 +6,9 @@ phonecatApp.controller('PhoneDetailCtrl', function($scope, $http, $location, $ro
              .success(function(data)
                 {
                     $scope.phone = data;
-                    data.$save();
+                    $scope.mainImageUrl = data.images[0];
+            
+                    //data.$save();
                 }
             )
              .error(function()
@@ -14,5 +16,10 @@ phonecatApp.controller('PhoneDetailCtrl', function($scope, $http, $location, $ro
                     console.log('Loading failed');
                 }
             );
+    
+        $scope.setImageUrl = function(imageUrl){
+            $scope.mainImageUrl = imageUrl;
+        };
+    
     }
 );
