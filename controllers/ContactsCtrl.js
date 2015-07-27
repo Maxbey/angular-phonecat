@@ -1,4 +1,4 @@
-phonecatApp.controller('ContactsCtrl', function($scope)
+AppControllers.controller('ContactsCtrl', function($scope)
     {
         $scope.title = 'Contacts';    
     }

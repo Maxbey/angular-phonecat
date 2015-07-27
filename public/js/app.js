@@ -1,6 +1,18 @@
-var phonecatApp = angular.module('phonecatApp', ['ngRoute', 'ngResource']);
+var App = angular.module('phonecatApp', [
+    'ngRoute',
+    'phonecatAnimations',
+    'phonecatControllers',
+    'phonecatFilters',
+    'phonecatServices'
+]);
 
-phonecatApp.config([
+var AppControllers = angular.module('phonecatControllers', []);
+var AppFilters = angular.module('phonecatFilters', []);
+var AppServices = angular.module('phonecatServices', ['ngResource']);
+var AppAnimations = angular.module('phonecatAnimations', ['ngAnimate']);
+
+
+App.config([
     '$routeProvider', '$locationProvider' ,function($routeProvide, $locationProvider){
         $locationProvider.html5Mode({
             enabled: true,
@@ -28,7 +40,7 @@ phonecatApp.config([
             });
     }
 ]);
-phonecatApp.factory('Phone', [
+AppServices.factory('Phone', [
     '$resource', function($resource)
     {
         return $resource('data/phones/:phoneId.:format', 
@@ -39,24 +51,24 @@ phonecatApp.factory('Phone', [
         );
     }
 ]);
-phonecatApp.filter('checkmark', function()
+AppFilters.filter('checkmark', function()
     {
         return function(mark){
             return mark ? '\u2713' : '\u2718';
         };
     }
 );
-phonecatApp.controller('AboutCtrl', function($scope)
+AppControllers.controller('AboutCtrl', function($scope)
     {
         $scope.title = 'About';    
     }
 );
-phonecatApp.controller('ContactsCtrl', function($scope)
+AppControllers.controller('ContactsCtrl', function($scope)
     {
         $scope.title = 'Contacts';    
     }
 );
-phonecatApp.controller('PhoneDetailCtrl', function($scope, $http, $location, $routeParams, Phone)
+AppControllers.controller('PhoneDetailCtrl', function($scope, $http, $location, $routeParams, Phone)
     {   
         Phone.get({phoneId: $routeParams.id}, function(data)
             {
@@ -72,7 +84,7 @@ phonecatApp.controller('PhoneDetailCtrl', function($scope, $http, $location, $ro
         };
     }
 );
-phonecatApp.controller('PhonesCtrl', function($scope, $http, $location, Phone)
+AppControllers.controller('PhonesCtrl', function($scope, $http, $location, Phone)
 {
     $scope.title = 'Phones';
     $scope.phones = Phone.query();

@@ -1,4 +1,4 @@
-phonecatApp.controller('AboutCtrl', function($scope)
+AppControllers.controller('AboutCtrl', function($scope)
     {
         $scope.title = 'About';    
     }

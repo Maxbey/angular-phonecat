@@ -108,3 +108,31 @@ h2 {
     position: fixed;
     right: 0;
 }
+
+.view-container {
+    position: absolute;
+    margin-top: 60px;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    opacity: 1;
+}
+
+.view-container.ng-enter,
+.view-container.ng-leave {
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
+.view-container.ng-enter {
+    opacity: 0;
+}
+.view-container.ng-enter-active {
+    opacity: 1;
+}
+.view-container.ng-leave {
+    opacity: 1;
+}
+.view-container.ng-leave-active {
+    opacity: 0;
+}

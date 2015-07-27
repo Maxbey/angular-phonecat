@@ -1,6 +1,18 @@
-var phonecatApp = angular.module('phonecatApp', ['ngRoute', 'ngResource']);
+var App = angular.module('phonecatApp', [
+    'ngRoute',
+    'phonecatAnimations',
+    'phonecatControllers',
+    'phonecatFilters',
+    'phonecatServices'
+]);
 
-phonecatApp.config([
+var AppControllers = angular.module('phonecatControllers', []);
+var AppFilters = angular.module('phonecatFilters', []);
+var AppServices = angular.module('phonecatServices', ['ngResource']);
+var AppAnimations = angular.module('phonecatAnimations', ['ngAnimate']);
+
+
+App.config([
     '$routeProvider', '$locationProvider' ,function($routeProvide, $locationProvider){
         $locationProvider.html5Mode({
             enabled: true,

@@ -1,4 +1,4 @@
-phonecatApp.controller('PhoneDetailCtrl', function($scope, $http, $location, $routeParams, Phone)
+AppControllers.controller('PhoneDetailCtrl', function($scope, $http, $location, $routeParams, Phone)
     {   
         Phone.get({phoneId: $routeParams.id}, function(data)
             {

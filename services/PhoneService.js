@@ -1,4 +1,4 @@
-phonecatApp.factory('Phone', [
+AppServices.factory('Phone', [
     '$resource', function($resource)
     {
         return $resource('data/phones/:phoneId.:format', 
