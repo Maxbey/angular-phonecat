@@ -3,11 +3,11 @@
  <div class="row">
   <div class="col-xs-12 col-sm-4">
     <div class="phone-images">
-      <img ng-src="{{ 'public/' + mainImageUrl }}">
+      <img ng-src="{{ mainImageUrl }}">
     </div>
     <ul class="phone-thumbs list-unstyled">
       <li ng-repeat="img in phone.images">
-        <img ng-src="{{'public/' + img}}" ng-click="setImageUrl(img)">
+        <img ng-src="{{ 'public/' + img }}" ng-click="setImageUrl(img)">
       </li>
     </ul>
   </div>

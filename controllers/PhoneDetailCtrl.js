@@ -1,23 +1,15 @@
-phonecatApp.controller('PhoneDetailCtrl', function($scope, $http, $location, $routeParams)
+phonecatApp.controller('PhoneDetailCtrl', function($scope, $http, $location, $routeParams, Phone)
     {   
-        var url = 'data/phones/' + $routeParams.id + '.json';
-    
-        $http.get(url)
-             .success(function(data)
-                {
-                    $scope.phone = data;
-                    $scope.mainImageUrl = data.images[0];
-            
-                    //data.$save();
-                }
-            )
-             .error(function()
-                {
-                    console.log('Loading failed');
-                }
-            );
-    
-        $scope.setImageUrl = function(imageUrl){
+        Phone.get({phoneId: $routeParams.id}, function(data)
+            {
+                $scope.phone = data;
+                $scope.mainImageUrl = data.images[0];
+            }
+        );
+        
+        
+        $scope.setImageUrl = function(imageUrl)
+        {
             $scope.mainImageUrl = imageUrl;
         };
     }

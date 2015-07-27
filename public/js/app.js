@@ -1,4 +1,4 @@
-var phonecatApp = angular.module('phonecatApp', ['ngRoute']);
+var phonecatApp = angular.module('phonecatApp', ['ngRoute', 'ngResource']);
 
 phonecatApp.config([
     '$routeProvider', '$locationProvider' ,function($routeProvide, $locationProvider){
@@ -28,6 +28,17 @@ phonecatApp.config([
             });
     }
 ]);
+phonecatApp.factory('Phone', [
+    '$resource', function($resource)
+    {
+        return $resource('data/phones/:phoneId.:format', 
+            {
+                phoneId: 'phones',
+                format: 'json'
+            }
+        );
+    }
+]);
 phonecatApp.filter('checkmark', function()
     {
         return function(mark){
@@ -45,43 +56,24 @@ phonecatApp.controller('ContactsCtrl', function($scope)
         $scope.title = 'Contacts';    
     }
 );
-phonecatApp.controller('PhoneDetailCtrl', function($scope, $http, $location, $routeParams)
+phonecatApp.controller('PhoneDetailCtrl', function($scope, $http, $location, $routeParams, Phone)
     {   
-        var url = 'data/phones/' + $routeParams.id + '.json';
-    
-        $http.get(url)
-             .success(function(data)
-                {
-                    $scope.phone = data;
-                    $scope.mainImageUrl = data.images[0];
-            
-                    //data.$save();
-                }
-            )
-             .error(function()
-                {
-                    console.log('Loading failed');
-                }
-            );
-    
-        $scope.setImageUrl = function(imageUrl){
+        Phone.get({phoneId: $routeParams.id}, function(data)
+            {
+                $scope.phone = data;
+                $scope.mainImageUrl = data.images[0];
+            }
+        );
+        
+        
+        $scope.setImageUrl = function(imageUrl)
+        {
             $scope.mainImageUrl = imageUrl;
         };
     }
 );
-phonecatApp.controller('PhonesCtrl', function($scope, $http, $location)
+phonecatApp.controller('PhonesCtrl', function($scope, $http, $location, Phone)
 {
     $scope.title = 'Phones';
-
-        $http.get('data/phones/phones.json')
-             .success(function(data, status, headers, config)
-            {
-                $scope.phones = data;
-            })
-             .error(function()
-            {
-                console.log('Loading failed');
-            });
-    
-    
+    $scope.phones = Phone.query();
 });
