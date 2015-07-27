@@ -3,14 +3,14 @@ phonecatApp.controller('PhoneDetailCtrl', function($scope, $http, $location, $ro
         Phone.get({phoneId: $routeParams.id}, function(data)
             {
                 $scope.phone = data;
-                $scope.mainImageUrl = data.images[0];
+                $scope.mainImageUrl = 'public/' + data.images[0];
             }
         );
         
         
         $scope.setImageUrl = function(imageUrl)
         {
-            $scope.mainImageUrl = imageUrl;
+            $scope.mainImageUrl = 'public/' + imageUrl;
         };
     }
 );
