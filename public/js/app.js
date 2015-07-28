@@ -58,6 +58,31 @@ AppFilters.filter('checkmark', function()
         };
     }
 );
+AppAnimations.animation('.phone', function() 
+    {
+        console.log('works!');
+        var animateToggle = function (element, className, done)
+        {
+            
+            
+            if(className != 'current')
+            {
+                return;
+            }
+            
+            element.css({
+                'display': 'none'
+            });
+            
+            element.fadeIn();
+        };
+    
+        return {
+            addClass: animateToggle,
+            removeClass: animateToggle
+        };
+    }
+);
 AppControllers.controller('AboutCtrl', function($scope)
     {
         $scope.title = 'About';    
@@ -76,12 +101,27 @@ AppControllers.controller('PhoneDetailCtrl', function($scope, $http, $location, 
                 $scope.mainImageUrl = 'public/' + data.images[0];
             }
         );
-        
-        
+       
         $scope.setImageUrl = function(imageUrl)
         {
+            var element = '.phone';
+            
+            angular.element(element).hide();
+            angular.element(element).fadeIn();
+            
             $scope.mainImageUrl = 'public/' + imageUrl;
         };
+    
+        
+    
+        
+        $scope.$on('$viewContentLoaded', function(event)
+            {
+                angular.element('body,html').delay(200).animate({
+                    scrollTop: 0
+                }, 0);
+            }
+        );
     }
 );
 AppControllers.controller('PhonesCtrl', function($scope, $http, $location, Phone)

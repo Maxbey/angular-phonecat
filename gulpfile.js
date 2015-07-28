@@ -8,6 +8,7 @@ gulp.task('js', function() {
         './app.js',
         './services/*.js',
         './filters/*.js',
+        './animations/*.js',
         './controllers/*.js',
         './directives/*.js'
         

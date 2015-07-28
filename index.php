@@ -36,7 +36,7 @@
   </div><!-- /.container -->
 </nav><!-- /.navbar -->
   
-   <div ng-view class="container"></div>
+   <div ng-view class="container view-container"></div>
     
 </body>
 </html>

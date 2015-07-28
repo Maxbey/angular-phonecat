@@ -5,7 +5,9 @@
              <div class="row">
                   <div class="col-xs-12 col-sm-6 col-lg-4 item" ng-repeat="phone in phones | filter:search">
                       <div class="preview-img text-center">
-                          <img ng-src="{{ 'public/' + phone.imageUrl }}" alt="{{ phone.name }}">
+                          <a href="/phones/{{ phone.id }}">
+                              <img ng-src="{{ 'public/' + phone.imageUrl }}" alt="{{ phone.name }}">
+                          </a>
                           <span class="label" ng-init="status = phone.status ? 'В наличии' : 'Под заказ'" 
                              ng-class="{'label-success': phone.status, 'label-warning': !phone.status}" >
                               {{ status }}
@@ -28,3 +30,8 @@
 		</div>
 	</div><!--/.sidebar-offcanvas-->
       </div>
+      
+<br>
+<span class="base-class" ng-class="myVar">Sample Text</span>
+<input id="setbtn" type="button" value="set" ng-click="myVar='my-class'">
+<input id="clearbtn" type="button" value="clear" ng-click="myVar=''">
